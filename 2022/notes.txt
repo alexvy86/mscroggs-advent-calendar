@@ -1,70 +1,54 @@
-Red drone's params
-initial_x -> 6 7 9 10 11 13 14 15 17 18
-             Deduction from (window 4) - not 1, 2, 3, 19, 20
-             Deduction from experiments on 12/13 - not 4, 5, 8, 12, 16
-initial_y -> 18
-             Deduction from (window 4) - is 18
+RED DRONE
+
+initial_x -> 18
+             (door 4) deduction
+initial_y -> 13
+             (door 10 plus others)
 speed_x   -> 7
-             factor of 840 (window 2) - not 9, 11, 13, 16, 17, 18, 19
-             is 9, 8, or 7 (window 11) - drop almost everything else
-             not a factor of 128 (window 6) - drop 8
-speed_y   -> 3
-             is 3 (window 1) - drop everything else
+             factor of 840 (door 2) - not 9, 11, 13, 16, 17, 18, 19
+             is 9, 8, or 7 (door 11) - drop almost everything else
+             not a factor of 128 (door 6) - drop 8
+speed_y   -> 1
+             is 1 (door 1) - drop everything else
 
-Blue drone's params
+(door 4)
+On Dec 2, red's horizontal position was 5
+r_x(2) = (r_x0 + 1*7) = 5, so r_x0 = 18
+
+(door 10)
+red_y(8) = 20, => (r_y0 + 7*1) = 20 => r_y0 = 13
+
+------
+BLUE DRONE
+
 initial_x -> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
-initial_y -> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+initial_y -> 9
+             blue_y(4) = 14 (door 14) => (b_y0 + 3*15) = 14 => b_y0 = 9
 speed_x   -> 1 2 4 5 7 8 10 11 12 13 14 15 16 17 18 19 20
-             not 3, 6, or 9 (window 3)
-speed_y   -> 2 8 10 12 14 15 20
-             not 1, 3, 5 (window 5)
-             not 4, 6, 7 (window 7)
-             factor of 840 (windows 8) - not 9, 11, 13, 16, 17, 18, 19
+             not 3, 6, or 9 (door 3)
+speed_y   -> 15
+             not 1, 3, 5 (door 5)
+             not 4, 6, 7 (door 7)
+             factor of 840 (door 8) - not 9, 11, 13, 16, 17, 18, 19
+             must be 15, because the restrictions on y(4) and y(6) only allow it to be 5 or 15
 
-blue_y(8) = 20
+blue_y(8) != 20 (door 10 + 14)
+blue_y(6) = 4 (door 13; red cannot be one of them)
 
-Orange drone's params
+In order for blue_y(4) = 14 and blue_y(6) = 4, speed_y = 5 or 15
+
+------
+ORANGE DRONE
+
 initial_x -> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
-initial_y -> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+initial_y -> 4
+             since y(6) = 4 => (o_y0 + 5*8) = 4 => o_y0 = 4
 speed_x   -> 1 3 4
-             1, 3, or 4 (window 12) - drop everything else
-speed_y   -> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+             1, 3, or 4 (door 12) - drop everything else
+speed_y   -> 8
+             In order for orange_y(6) = 4 and orange_y(8) = 20 , speed_y = 8 or 18. But 18 would make y(5) = 6,
+             which it cannot be, so speed_y = 8.
 
-orange_y(8) = 20
-orange_y(5) != 6
-
-(Window 10)
-On Dec 8, the vertical position of two drones was 20. Deduced this is Blue and Orange.
-(Window 9)
-On Dec 5, orange's vertical position was NOT 6.
-
-
-12/12
-We know red(n) = (18 + (n-1)*7, r_y0 + (n-1)*3)
-
-According to Window 10, on Dec 8 two drones had vertical position of 20.
-If red was one of them, then:
-
-red(n) = (18 + (n-1)*7, r_y0 + (n-1)*3)
-red(8)_y = r_y0 + 7*3 = 20
-If this is true, r_y0 = 19
-
-red(n) = (18 + (n-1)*7, 19 + (n-1)*3)
-red(12) = (18 + 11*7, 19 + 11*3) = (18 + 77, 19 + 33) = (18 + 17, 19 + 13) = (15, 12)
-
-(15, 12) -> DID NOT HIT. So red did not have r_y=20 on Dec 8, and r_y0 != 19.
-(15, 13) -> DID NOT HIT. So r_y0 != 20
-(15, 14) -> DID NOT HIT. So r_y0 != 1
-(15, 15) -> DID NOT HIT. So r_y0 != 2
-(15, 16) -> DID NOT HIT. So r_y0 != 3
-
-That means on Dec 8, b_y=20 and o_y=20.
-
-12/13
-red(n) = (18 + (n-1)*7, r_y0 + (n-1)*3)
-
-r_y0=4 ->  (2, 20) -> DID NOT HIT. So red did not have r_y=20 on Dec 8, and r_y0 != 4.
-r_y0=8 ->  (2, 4) -> DID NOT HIT. So r_y0 != 8
-r_y0=12 -> (2, 8) -> DID NOT HIT. So r_y0 != 12
-r_y0=16 -> (2, 12) -> DID NOT HIT. So r_y0 != 16
-r_y0=5 ->  (2, 1) -> DID NOT HIT. So r_y0 != 5
+orange_y(5) != 6 (door 9)
+orange_y(8) = 20 (door 10)
+orange_y(6) = 4 (door 13; red cannot be one of them)

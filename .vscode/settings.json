@@ -1,0 +1,5 @@
+{
+	// Necessary so autopep8 doesn't override my editor.tabSize and editor.insertSpaces,
+	// forcing indentation with 4 spaces in Python files.
+	"python.formatting.autopep8Args": ["--ignore E121"],
+}

@@ -3,4 +3,4 @@ disable=unspecified-encoding,missing-module-docstring,missing-function-docstring
 
 [FORMAT]
 max-line-length=150
-indent-string='  '
+indent-string='	'

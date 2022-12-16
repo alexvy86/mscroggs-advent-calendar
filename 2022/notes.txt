@@ -40,12 +40,14 @@ In order for blue_y(4) = 14 and blue_y(6) = 4, speed_y = 5 or 15
 ------
 ORANGE DRONE
 
-initial_x -> 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+initial_x -> 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
              trial and error on 12/15 -> can't be 1
+             trial and error on 12/16 -> can't be 2 nor 3
 initial_y -> 4
              since y(6) = 4 => (o_y0 + 5*8) = 4 => o_y0 = 4
-speed_x   -> 1 3 4
+speed_x   -> 3 4
              1, 3, or 4 (door 12) - drop everything else
+             2, 3, or 4 (door 16) - drop 1
 speed_y   -> 8
              In order for orange_y(6) = 4 and orange_y(8) = 20 , speed_y = 8 or 18. But 18 would make y(5) = 6,
              which it cannot be, so speed_y = 8.
@@ -65,3 +67,13 @@ speed_x = 4 => orange(15) = (1 + 14*4, 4 + 14*8) = (17, 16) no hit
 So x0 != 1
 Let's assume x0 = 2
 speed_x = 1 => orange(15) = (2 + 14*1, 4 + 14*8) = (16, 16) no hit
+
+12/16 - Trial and error
+Let's assume x0 = 2
+speed_x = 3 => orange(16) = (2 + 15*3, 4 + 15*8) = (7, 4) no hit
+speed_x = 4 => orange(16) = (2 + 15*4, 4 + 15*8) = (2, 4) no hit
+So x0 != 2
+Let's assume x0 = 3
+speed_x = 3 => orange(16) = (3 + 15*3, 4 + 15*8) = (8, 4) no hit
+speed_x = 4 => orange(16) = (3 + 15*4, 4 + 15*8) = (3, 4) no hit
+So x0 != 3

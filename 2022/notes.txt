@@ -34,20 +34,22 @@ speed_y   -> 15
 
 blue_y(8) != 20 (door 10 + 14)
 blue_y(6) = 4 (door 13; red cannot be one of them)
-
 In order for blue_y(4) = 14 and blue_y(6) = 4, speed_y = 5 or 15
+blue_x(14) != 4 (from experiments on 12/17; only orange had that x on Dec 14)
 
 ------
 ORANGE DRONE
 
-initial_x -> 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+initial_x -> 5
              trial and error on 12/15 -> can't be 1
              trial and error on 12/16 -> can't be 2 nor 3
+						 from experiments on 12/17 -> it's 5
 initial_y -> 4
              since y(6) = 4 => (o_y0 + 5*8) = 4 => o_y0 = 4
-speed_x   -> 3 4
+speed_x   -> 3
              1, 3, or 4 (door 12) - drop everything else
              2, 3, or 4 (door 16) - drop 1
+						 from experiments on 12/17 -> it's 3
 speed_y   -> 8
              In order for orange_y(6) = 4 and orange_y(8) = 20 , speed_y = 8 or 18. But 18 would make y(5) = 6,
              which it cannot be, so speed_y = 8.
@@ -77,3 +79,34 @@ Let's assume x0 = 3
 speed_x = 3 => orange(16) = (3 + 15*3, 4 + 15*8) = (8, 4) no hit
 speed_x = 4 => orange(16) = (3 + 15*4, 4 + 15*8) = (3, 4) no hit
 So x0 != 3
+
+12/17
+(door 17) - On Dec 14, x for one drone was 4
+Could it have been red?
+r_x(14) = 18 + 13*7 = 9
+It was not red.
+
+If it was orange, it means:
+o_x(14) = o_x0 + 13*3 = 4 OR o_x0 + 13*4 = 4
+The first means that o_x0 = 5. If that's the case, o(17) = (5 + 16*3, 4 + 16*8) = (13, 12)
+AND THAT DESTROYED THE ORANGE DRONE, WOO! It means that o_x0 = 5 and speed_x = 3
+
+So it means b_x(14) != 4.
+Combinations of b_x0 and speed_x with that result cannot be true. Which are those?
+(1,11)
+(2,14)
+(3,17)
+(4,20)
+(8,12)
+(9,15)
+(10,18)
+(11,1)
+(12,4)
+(13,7)
+(14,10)
+(15,13)
+(16,16)
+(17,19)
+(18,2)
+(19,5)
+(20,8)

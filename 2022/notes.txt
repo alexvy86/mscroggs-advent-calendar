@@ -21,11 +21,13 @@ red_y(8) = 20, => (r_y0 + 7*1) = 20 => r_y0 = 13
 ------
 BLUE DRONE
 
-initial_x -> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+initial_x -> 2 4 5 6 7 8 9 10 12 13 14 15 16 17 18 19 20
+             experiments on 12/18 -> not 1,3,11
 initial_y -> 9
              blue_y(4) = 14 (door 14) => (b_y0 + 3*15) = 14 => b_y0 = 9
-speed_x   -> 1 2 4 5 7 8 10 11 12 13 14 15 16 17 18 19 20
+speed_x   -> 1 2 4 5 7 8 10 12 14 15 17 18 19 20
              not 3, 6, or 9 (door 3)
+             experiments on 12/18 -> not 11,13,16
 speed_y   -> 15
              not 1, 3, 5 (door 5)
              not 4, 6, 7 (door 7)
@@ -36,6 +38,7 @@ blue_y(8) != 20 (door 10 + 14)
 blue_y(6) = 4 (door 13; red cannot be one of them)
 In order for blue_y(4) = 14 and blue_y(6) = 4, speed_y = 5 or 15
 blue_x(14) != 4 (from experiments on 12/17; only orange had that x on Dec 14)
+blue_x(15) = 5 (door 18, after discarding orange and red)
 
 ------
 ORANGE DRONE
@@ -57,7 +60,7 @@ speed_y   -> 8
 orange_y(5) != 6 (door 9)
 orange_y(8) = 20 (door 10)
 orange_y(6) = 4 (door 13; red cannot be one of them)
-
+orange_x(15) != 5 (door 18, experiments)
 
 
 12/15 - Trial and error
@@ -110,3 +113,19 @@ Combinations of b_x0 and speed_x with that result cannot be true. Which are thos
 (18,2)
 (19,5)
 (20,8)
+
+12/18
+(door 18) On Dec 15, x of one drone was 5
+Was it orange? It'd mean that
+o_x(15) = o_x0 + 14*3 = 5 OR o_x0 + 14*4 = 5
+The first means o_x0 = 3. If that's the case, o(18) = (3 + 17*3, 4 + 17*8) = (14, 20)
+(14, 20) did not hit. So if orange is the one with o_x(15) = 5, then it must have speed_x = 4. Let's try.
+Speed 4 means o_x0 = 9, and that'd mean o(18) = (9 + 17*4, 4 + 17*8) = (17, 20)
+(17, 20) did not hit. So o_x(15) != 5.
+Was it the red? (18 + 14*7) = (18 + 18) = 16. No
+So b_x(15) = 5.
+
+Now experiment to narrow down orange.
+(13,4) did not hit. So x0!=1 and speed_x != 16
+(18,4) did not hit. So x0!=11 and speed_x != 11
+(4,4)  did not hit. So x0!=3 and speed_x != 13
